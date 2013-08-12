@@ -34,6 +34,7 @@ describe User do
     let(:user) { create(:user_with_karma, :total => 500, :points => 2) }
 
     it 'returns the total karma for the user' do
+      user.total_karma_points.should eq 0
       user.total_karma.should eq 500
     end
   end
