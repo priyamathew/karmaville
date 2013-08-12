@@ -7,6 +7,9 @@ class KarmaPoint < ActiveRecord::Base
   validates :label, :presence => true
   before_save :update_total_karma_points
 
+
+  private
+
   def update_total_karma_points
     user = User.find(self.user_id)
     user.increment!(:total_karma_points, by = self.value)
