@@ -10,3 +10,36 @@
     <%= render 'user_row', :user => user %>
   <% end %>
 </table>
+
+<div class="pagination">
+  <ul>
+    <% if @page_num < 3 || @page_num.nil? %>
+      <% case @page_num %>
+        <% when (0..1)%>
+          <li class="disabled"><a href="/">Prev</a></li>
+          <li class="active"><a href="/?page=1">1</a></li>
+          <li><a href="/?page=2">2</a></li>
+          <li><a href="/?page=3">3</a></li>
+          <li><a href="/?page=4">4</a></li>
+          <li><a href="/?page=5">5</a></li>
+          <li><a href="/?page=6">Next</a></li>
+        <% when 2 %>
+          <li class="disabled"><a href="/">Prev</a></li>
+          <li><a href="/?page=1">1</a></li>
+          <li class="active"><a href="/?page=2">2</a></li>
+          <li><a href="/?page=3">3</a></li>
+          <li><a href="/?page=4">4</a></li>
+          <li><a href="/?page=5">5</a></li>
+          <li><a href="/?page=6">Next</a></li>
+      <% end %>
+    <% else %>
+      <li><a href="/?page=<%= @page_num - 3 %>">Prev</a></li>
+      <li><a href="/?page=<%= @page_num - 2 %>"><%= @page_num - 2 %></a></li>
+      <li><a href="/?page=<%= @page_num - 1 %>"><%= @page_num - 1 %></a></li>
+      <li class="active"><a href="/?page=<%= @page_num %>"><%= @page_num %></a></li>
+      <li><a href="/?page=<%= @page_num + 1 %>"><%= @page_num + 1 %></a></li>
+      <li><a href="/?page=<%= @page_num + 2 %>"><%= @page_num + 2 %></a></li>
+      <li><a href="/?page=<%= @page_num + 3 %>">Next</a></li>
+    <% end %>
+  </ul>
+</div>

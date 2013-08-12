@@ -1,5 +1,5 @@
 class KarmaPoint < ActiveRecord::Base
-  attr_accessible :user_id, :label, :value
+  attr_accessible :user_id, :label, :value, :user
   belongs_to :user
 
   validates :user, :presence => true
@@ -11,7 +11,10 @@ class KarmaPoint < ActiveRecord::Base
   private
 
   def update_total_karma_points
-    user = User.find(self.user_id)
-    user.increment!(:total_karma_points, by = self.value)
+    self.user.increment!(:total_karma_points, by = self.value)
+    # user.total_karma_points = 10
+    # user.save!
+    # puts user.total_karma_points
+    # puts user.inspect
   end
 end

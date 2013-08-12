@@ -34,7 +34,6 @@ describe User do
     let(:user) { create(:user_with_karma, :total => 500, :points => 2) }
 
     it 'returns the total karma for the user' do
-      user.total_karma_points.should eq 0
       user.total_karma.should eq 500
     end
   end
@@ -49,4 +48,21 @@ describe User do
       user.full_name.should eq 'John Doe'
     end
   end
+
+  describe '#page' do
+    # before(:each) do
+    #   100.times do
+    #     FactoryGirl.create(:user_with_karma)
+    #   end
+    # end
+
+    # it "should have some other things and stuffs" do
+    #   # built_users = FactoryGirl.create_list(:user, 100)
+    #   first_karma_shit = User.by_karma.page(2).first.total_karma_points
+    #   dat_second_karma_ish = User.by_karma.page(1).first.total_karma_points
+    #   # expect { User.by_karma.page(2).first.total_karma_points }.to be < User.by_karma_page(1).last.total_karma_points
+    #   expect(first_karma_shit).to be < dat_second_karma_ish
+    # end
+  end
+
 end
