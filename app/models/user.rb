@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end
 
   def total_karma
-    karma_points.sum(:value)
+    self.total_karma_points
   end
 
   def full_name
